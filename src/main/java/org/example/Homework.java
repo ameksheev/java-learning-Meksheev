@@ -40,7 +40,6 @@ public class Homework {
         String countdown = "";
         for (int i = start; i > 0; i--) {
             countdown = countdown + i + " ";
-            //countdown = countdown + " Поехали!";
         }
         return countdown + "Поехали!";
     }
