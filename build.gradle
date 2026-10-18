@@ -17,4 +17,15 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+        events "passed", "failed"
+    }
+}
+
+tasks.register('myFirstTestRun') {
+    dependsOn test
+    doLast {
+        println 'Test run is over'
+    }
 }
