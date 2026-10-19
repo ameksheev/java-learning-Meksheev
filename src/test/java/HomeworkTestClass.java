@@ -12,8 +12,6 @@ import java.util.Random;
 
 public class HomeworkTestClass {
 
-    Homework homework = new Homework();
-
     @BeforeEach
     void before() {
         System.out.println("========================");
@@ -29,7 +27,7 @@ public class HomeworkTestClass {
     void testIsEven() {
         Random random = new Random();
         int randomNumber = random.nextInt(101);
-        boolean result = homework.isEven(randomNumber);
+        boolean result = Homework.isEven(randomNumber);
         System.out.println("Метод isEven: " + randomNumber + " = " + result);
 
     }
@@ -37,7 +35,7 @@ public class HomeworkTestClass {
     void testCheckAccess() {
         Random random = new Random();
         int age = random.nextInt(100);
-        String access = homework.checkAccess(age);
+        String access = Homework.checkAccess(age);
         System.out.println("Метод checkAccess: " + age + " = " + access);
     }
 
@@ -53,7 +51,7 @@ public class HomeworkTestClass {
     @ParameterizedTest
     @MethodSource("randomNumbers")
     void testGetGrade(int score) {
-        String grade = homework.getGrade(score);
+        String grade = Homework.getGrade(score);
         System.out.println("Метод getGrade: " + score + " = " + grade);
     }
 

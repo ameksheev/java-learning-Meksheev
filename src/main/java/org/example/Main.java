@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Homework homework = new Homework();
-        System.out.println(homework.removeSpecificName(List.of("Anna", "Alex", "Anna"), "Anna" ));
+        System.out.println(Homework.removeSpecificName(List.of("Anna", "Alex", "Anna"), "Anna" ));
         }
     }
