@@ -19,7 +19,7 @@ test {
     useJUnitPlatform()
     testLogging {
         showStandardStreams = true
-        events "passed", "failed"
+        events "PASSED", "FAILED"
     }
 }
 

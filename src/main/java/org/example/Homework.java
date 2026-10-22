@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Homework {
 
@@ -104,5 +105,14 @@ public class Homework {
             }
         }
         return filteredName;
+    }
+    static String[] randomStrings() {
+        String[] pool = {"Bug", "Anna", "DEBUG", "Linux", "John", "Innotech", "Java"};
+        Random random = new Random();
+        String[] result = new String[random.nextInt(1, 6)];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = pool[random.nextInt(pool.length)];
+        }
+        return result;
     }
 }

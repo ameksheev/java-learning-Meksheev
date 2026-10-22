@@ -31,6 +31,7 @@ public class HomeworkTestClass {
         System.out.println("Метод isEven: " + randomNumber + " = " + result);
 
     }
+
     @RepeatedTest(20)
     void testCheckAccess() {
         Random random = new Random();
