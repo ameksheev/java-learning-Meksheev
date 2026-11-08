@@ -17,10 +17,12 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        includeTags 'homework2'
+    }
     testLogging {
         showStandardStreams = true
-        events "PASSED", "FAILED"
+        events "passed", "failed"
     }
 }
 

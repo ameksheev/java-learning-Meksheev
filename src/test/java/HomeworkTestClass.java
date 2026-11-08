@@ -43,8 +43,8 @@ public class HomeworkTestClass {
     static List<Integer> randomNumbers() {
         List<Integer> numbers = new ArrayList<>();
         Random random = new Random();
-        for (int i = 0; i < 3; i++) {
-            numbers.add(random.nextInt(101));
+        for (int i = 0; i < 10; i++) {
+            numbers.add(random.nextInt(0, 101));
         }
         return numbers;
     }

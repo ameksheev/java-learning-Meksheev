@@ -1,5 +1,6 @@
 import org.example.Homework;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -10,84 +11,78 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.as;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 public class TaskForWebinarOne {
 
     //Test 1
-    @Test
+    @Tag("homework2")
+    @RepeatedTest(10)
     void testIsPositive() {
         Random random = new Random();
         int randomNumber = random.nextInt(-100, 100);
         boolean isPositive = Homework.isPositive(randomNumber);
-        boolean Result = randomNumber >= 0;
-        System.out.println("Метод isPositive: " + randomNumber + " = " + isPositive);
-        if (Result == isPositive) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
+        boolean result = randomNumber >= 0;
+        assertThat(result)
+                .as("isPositive для числа " + randomNumber)
+                .isEqualTo(isPositive);
     }
 
     //Test 2
-    @Test
+    @Tag("homework2")
+    @RepeatedTest(10)
     void testIsEven() {
         Random random = new Random();
         int randomNumber = random.nextInt(101);
         boolean result = Homework.isEven(randomNumber);
         boolean expectedResult = randomNumber % 2 == 0;
-        System.out.println("Метод isEven: " + randomNumber + " = " + result);
-        if (expectedResult == result) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
+        assertThat(result)
+                .as("isEven для числа " + randomNumber)
+                .isEqualTo(expectedResult);
     }
 
     //Test 3
-    @Test
+    @Tag("homework2")
+    @RepeatedTest(10)
     void testCheckAccess() {
         Random random = new Random();
         int randomNumber = random.nextInt(0, 100);
         String result = Homework.checkAccess(randomNumber);
         String expectedResult = (randomNumber > 18) ? "Allowed" : "Denied";
-        System.out.println("Метод checkAccess: " + randomNumber + " = " + result);
-        if (result.equals(expectedResult)) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
+        assertThat(result)
+                .as("checkAccess для возраста " + randomNumber)
+                .isEqualTo(expectedResult);
     }
 
     //Test 4
-    @Test
+    @Tag("homework2")
+    @RepeatedTest(10)
     void testSumToN() {
         Random random = new Random();
         int randomNumber = random.nextInt(0, 101);
         int result = Homework.sumToN(randomNumber);
         int expectedResult = 5050;
-        System.out.println("Метод sumToN: " + randomNumber + " = " + result);
-        if (result == expectedResult) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
+        assertThat(result)
+                .as("sumToN для числа " + randomNumber)
+                .isEqualTo(expectedResult);
     }
 
     //Test 5
-    @RepeatedTest(3)
+    @Tag("homework2")
+    @RepeatedTest(10)
     void testBlastOff() {
         int start = new Random().nextInt(1, 10);
         String result = Homework.blastOff(start);
         String expected = "5 4 3 2 1 Поехали!";
-        System.out.println("Метод blastOff: " + start + " = " + result);
-        if (result.equals(expected)) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
+        assertThat(result)
+                .as("blastOff для start = " + start)
+                .isEqualTo(expected);
     }
 
     //Test 6
-    @RepeatedTest(4)
+    @Tag("homework2")
+    @RepeatedTest(10)
     void testFindMax() {
         Random random = new Random();
         int[] array = new int[random.nextInt(1, 8)];
@@ -96,16 +91,14 @@ public class TaskForWebinarOne {
         }
         int result = Homework.findMax(array);
         int expected = 92;
-        System.out.println("Метод findMax: " + Arrays.toString(array) + " = " + result);
-        if (result > expected) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
+        assertThat(result)
+                .as("findMax для массива " + Arrays.toString(array))
+                .isEqualTo(expected);
     }
 
     //Test 7
-    @RepeatedTest(5)
+    @Tag("homework2")
+    @RepeatedTest(10)
     void testCalcAverage() {
         Random random = new Random();
         List<Integer> list = new ArrayList<>();
@@ -115,42 +108,35 @@ public class TaskForWebinarOne {
         }
         int result = Homework.calcAverage(list);
         int expected = 63;
-        System.out.println("Метод calcAverage: " + list + " = " + result);
-        if (result < expected) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
+        assertThat(result)
+                .as("calcAverage для списка " + list)
+                .isEqualTo(expected);
     }
 
     //Test 8
-    @RepeatedTest(2)
+    @Tag("homework2")
+    @RepeatedTest(10)
     void testGetEvenInRange() {
         int start = new Random().nextInt(0, 10);
         int end = new Random().nextInt(11, 20);
         String result = Homework.getEvenInRange(start, end);
         String expected = "8 10 12 14";
-        System.out.println("Метод getEvenInRange: " + start + ", " + end + " = " + result);
-        if (!(result.equals(expected))) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
+        assertThat(result)
+                .as("getEvenInRange для диапазона " + start + ".." + end)
+                .isEqualTo(expected);
     }
 
     //Test 9
     // Использую метод с класса HomeworkTestClass
+    @Tag("homework2")
     @ParameterizedTest
     @MethodSource("HomeworkTestClass#randomNumbers")
     void testGetGrade(int score) {
         String result = Homework.getGrade(score);
         String expected = "D";
-        System.out.println("Метод getGrade: " + score + " = " + result);
-        if (result.equals(expected)) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
+        assertThat(result)
+                .as("getGrade для балла " + score)
+                .isEqualTo(expected);
     }
 
 
@@ -168,7 +154,7 @@ public class TaskForWebinarOne {
     //Метод для создания потока массивов для JUnit в переменную list
     static Stream<Arguments> randomArrays() {
         List<Arguments> list = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 10; i++) {
             String[] array = randomStrings();
             list.add(Arguments.of((Object) array));
         }
@@ -176,32 +162,28 @@ public class TaskForWebinarOne {
     }
 
     //Test 10
+    @Tag("homework2")
     @ParameterizedTest
     @MethodSource("randomArrays")
     void testHasBug(String[] messages) {
         boolean result = Homework.hasBug(messages);
         boolean expected = true;
-        System.out.println("Метод hasBug: " + Arrays.toString(messages) + " = " + result);
-        if (result == expected) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
+        assertThat(result)
+                .as("hasBug для массива " + Arrays.toString(messages))
+                .isEqualTo(expected);
     }
 
     //Test 11
+    @Tag("homework2")
     @ParameterizedTest
     @MethodSource("randomArrays")
     void testReverse(String[] arr) {
         String[] inputArray = arr;
         String[] result = Homework.reverse(arr);
         String[] expected = new String[]{"DEBUG", "John"};
-        System.out.println("Метод reverse" + Arrays.toString(inputArray) + " = " + Arrays.toString(result));
-        if (!Arrays.equals(result, expected)) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
+        assertThat(result)
+                .as("reverse для массива " + Arrays.toString(inputArray))
+                .isEqualTo(expected);
     }
 
     //Анаогичный метод, только в этом имена
@@ -219,7 +201,7 @@ public class TaskForWebinarOne {
     static Stream<Arguments> randomNamesAndRemove() {
         Random random = new Random();
         List<Arguments> result = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
             List<String> names = new ArrayList<>(Arrays.asList(randomNames()));
             String nameToRemove = names.get(random.nextInt(names.size()));
             result.add(Arguments.of(names, nameToRemove));
@@ -228,17 +210,16 @@ public class TaskForWebinarOne {
     }
 
     //Test 12
+    @Tag("homework2")
     @ParameterizedTest
     @MethodSource("randomNamesAndRemove")
     void testRemoveSpecificName(List<String> list, String nameToRemove) {
         List<String> result = Homework.removeSpecificName(list, nameToRemove);
         List<String> expected = new ArrayList<>();
         System.out.println("Метод removeSpecificName: " + list + " удалить " + nameToRemove + " = " + result);
-        if (result.equals(expected)) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
+        assertThat(result)
+                .as("removeSpecificName: убрать " + nameToRemove + " из " + nameToRemove)
+                .isEqualTo(expected);
 
     }
 }
